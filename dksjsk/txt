@@ -4,9 +4,17 @@ Constructor
 
 Render
 
-componentDidMount 
+componentDidMount -> It is a method that will be executed at initial render
 
--> Get explore repos
--> get activities
--> Get Links
--> Much more 
+*Updating*
+
+Constructor
+shouldComponentUpdate(nextProp, nextState) -> false or true
+render()
+getSnapshotBeforeUpdate(prevProps, prevState) -> false or true
+componentDidUpdate()
+
+*UnMounting*
+componentWillUnmount(){
+    console.log("bye bye");
+}
