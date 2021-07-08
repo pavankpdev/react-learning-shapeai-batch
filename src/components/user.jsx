@@ -1,55 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class User extends React.Component {
-  constructor(props) {
-    super(props);
+const User = (props) => {
+  const [planet, setPlanet] = useState("earth");
 
-    this.state = {
-      planet: "earth",
-    };
-    console.log("Hey I'm from Constructor");
-  }
+  // componentDidMount
+  useEffect(() => {
+    // heavy computation
+    console.log("component mounting");
 
-  componentDidMount() {
-    this.setState({ planet: "jupiter" });
-  }
+    // componentWillUnMount
+    return console.log("bye bye");
+  }, []);
 
-  // static getDerivedStateFromProps(prop, state) {
-  //   console.log("I'm from get derived state from props");
-  //   return { planet: "Jupiter" };
-  // }
+  // componentDidUpdate
+  // shouldComponentUpdate
+  useEffect(() => {
+    console.log("Planet changes");
+  }, [planet]);
 
-  shouldComponentUpdate(nextProp, nextState) {
-    console.log("from shouldComponentUpdate");
-    console.log({
-      nextProp,
-      nextState,
-    });
-    return true;
-  }
-
-  getSnapshotBeforeUpdate(prevProp, prevState) {
-    console.log("from getSnapshotBeforeUpdate");
-    console.log({ prevProp, prevState });
-    return true;
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
-  render() {
-    console.log("Hey Im from render()");
-    return (
-      <div>
-        <h1> {this.props.name} </h1>
-        <p> {this.props.description} </p>
-        <h4>{this.state.planet}</h4>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1> {props.name} </h1>
+      <p> {props.description} </p>
+      <button onClick={() => setPlanet("pluto")}>{planet}</button>
+    </div>
+  );
+};
 
 export default User;
 
 // state
+
+// React 16
+
+// Hooks -> power to you functional components
+
+// ->  Life Cycle methods
+
+// -> Hooks
